@@ -37,6 +37,12 @@ dependencies:
   # Firebase Authentication
   firebase_auth: ^5.0.0
 
+  # Firebase Messaging
+  firebase_messaging: ^15.1.3
+
+  #flutter local Notifications
+  flutter_local_notifications: ^17.2.2
+
   # Untuk navigasi yang lebih baik
   go_router: ^14.0.0
 
