@@ -2,17 +2,91 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../services/auth_service.dart';
+import '../services/notification_service.dart';
  
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
  
   @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  final _authService = AuthService();
+  String? _fcmToken;  // <-- TAMBAHKAN
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFcmToken();  // <-- TAMBAHKAN
+  }
+
+  // Ambil FCM Token saat screen pertama kali dibuka
+  Future<void> _loadFcmToken() async {
+    final token = await NotificationService().getToken();
+    if (mounted) setState(() => _fcmToken = token);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Ambil data user yang sedang login
-    final User? user = FirebaseAuth.instance.currentUser;
-    final authService = AuthService();
-    final theme = Theme.of(context);
- 
+    final user = _authService.currentUser;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () => _authService.logout(),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Halo, ${user?.email ?? 'User'}!',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 24),
+
+            // ── FCM TOKEN CARD ─────────────────────
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('FCM Token (untuk Postman):',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    SelectableText(_fcmToken ?? 'Memuat token...',
+                      style: const TextStyle(fontSize: 12)),
+                    const SizedBox(height: 8),
+                    ElevatedButton.icon(
+                      icon: const Icon(Icons.copy, size: 16),
+                      label: const Text('Copy Token'),
+                      onPressed: _fcmToken == null ? null : () {
+                        Clipboard.setData(ClipboardData(text: _fcmToken!));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Token disalin!')));
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       
