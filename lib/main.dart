@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'screens/login_screen.dart';
 import 'screens/dashboard_screen.dart';
+import 'services/notification_service.dart';
  
 Future<void> main() async {
   // Pastikan widget binding sudah diinisialisasi
@@ -15,6 +16,9 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   
+  // Inisialisasi NotificationService
+  await NotificationService().initialize();
+
   runApp(const MyApp());
 }
  
@@ -24,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-            title: 'Flutter Firebase Auth',
+            title: 'Raihan Firebase Auth',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
