@@ -46,3 +46,4 @@ app.*.map.json
 lib.zip
 mycatalog-be-service.zip
 mycatalog-be-service/__MACOSX/mycatalog-be-service/logs/._.DS_Store
+mycatalog-be-service/mycatalog-be-service
