@@ -1,7 +1,7 @@
-import 'package:pasar_malam/core/constants/api_constants.dart';
-import 'package:pasar_malam/core/services/dio_client.dart';
-import 'package:pasar_malam/features/dashboard/data/models/product_model.dart';
-import 'package:pasar_malam/features/dashboard/domain/repositories/product_repository.dart';
+import 'package:flutter_firebase_auth/core/constants/api_constants.dart';
+import 'package:flutter_firebase_auth/core/services/dio_client.dart';
+import 'package:flutter_firebase_auth/features/dashboard/data/models/product_model.dart';
+import 'package:flutter_firebase_auth/features/dashboard/domain/repositories/product_repository.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   @override

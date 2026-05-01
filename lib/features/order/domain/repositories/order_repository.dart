@@ -1,4 +1,4 @@
-import 'package:pasar_malam/features/order/data/models/order_model.dart';
+import 'package:flutter_firebase_auth/features/order/data/models/order_model.dart';
 
 abstract class OrderRepository {
   Future<OrderModel> checkout({

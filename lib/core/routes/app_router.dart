@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:pasar_malam/core/services/secure_storage.dart';
-import 'package:pasar_malam/features/auth/presentation/pages/login_page.dart';
-import 'package:pasar_malam/features/auth/presentation/pages/register_page.dart';
-import 'package:pasar_malam/features/auth/presentation/pages/verify_email_page.dart';
-import 'package:pasar_malam/features/auth/presentation/providers/auth_provider.dart';
-import 'package:pasar_malam/features/cart/presentation/pages/cart_page.dart';
-import 'package:pasar_malam/features/dashboard/presentation/pages/dashboard_page.dart';
-import 'package:pasar_malam/features/order/data/models/order_model.dart';
-import 'package:pasar_malam/features/order/presentation/pages/checkout_page.dart';
-import 'package:pasar_malam/features/order/presentation/pages/my_orders_page.dart';
-import 'package:pasar_malam/features/order/presentation/pages/order_success_page.dart';
-import 'package:pasar_malam/features/order/presentation/pages/payment_pending_page.dart';
+import 'package:flutter_firebase_auth/core/services/secure_storage.dart';
+import 'package:flutter_firebase_auth/features/auth/presentation/pages/login_page.dart';
+import 'package:flutter_firebase_auth/features/auth/presentation/pages/register_page.dart';
+import 'package:flutter_firebase_auth/features/auth/presentation/pages/verify_email_page.dart';
+import 'package:flutter_firebase_auth/features/auth/presentation/providers/auth_provider.dart';
+import 'package:flutter_firebase_auth/features/cart/presentation/pages/cart_page.dart';
+import 'package:flutter_firebase_auth/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:flutter_firebase_auth/features/order/data/models/order_model.dart';
+import 'package:flutter_firebase_auth/features/order/presentation/pages/checkout_page.dart';
+import 'package:flutter_firebase_auth/features/order/presentation/pages/my_orders_page.dart';
+import 'package:flutter_firebase_auth/features/order/presentation/pages/order_success_page.dart';
+import 'package:flutter_firebase_auth/features/order/presentation/pages/payment_pending_page.dart';
 import 'package:provider/provider.dart';
 
 class AppRouter {

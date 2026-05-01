@@ -1,4 +1,4 @@
-import 'package:pasar_malam/features/cart/data/models/cart_model.dart';
+import 'package:flutter_firebase_auth/features/cart/data/models/cart_model.dart';
 
 abstract class CartRepository {
   Future<CartModel> getCart();

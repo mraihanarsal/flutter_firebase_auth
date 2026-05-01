@@ -1,4 +1,4 @@
-import 'package:pasar_malam/features/dashboard/data/models/product_model.dart';
+import 'package:flutter_firebase_auth/features/dashboard/data/models/product_model.dart';
 
 abstract class ProductRepository {
   Future<List<ProductModel>> getProducts({int page = 1, int limit = 10, String? category});

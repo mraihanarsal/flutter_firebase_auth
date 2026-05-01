@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:pasar_malam/core/constants/api_constants.dart';
-import 'package:pasar_malam/core/services/dio_client.dart';
-import 'package:pasar_malam/core/services/secure_storage.dart';
+import 'package:flutter_firebase_auth/core/constants/api_constants.dart';
+import 'package:flutter_firebase_auth/core/services/dio_client.dart';
+import 'package:flutter_firebase_auth/core/services/secure_storage.dart';
 
 enum AuthStatus { initial, loading, authenticated, unauthenticated, emailNotVerified, error }
 

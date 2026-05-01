@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:pasar_malam/core/constants/api_constants.dart';
-import 'package:pasar_malam/core/services/secure_storage.dart';
+import 'package:flutter_firebase_auth/core/constants/api_constants.dart';
+import 'package:flutter_firebase_auth/core/services/secure_storage.dart';
 
 class DioClient {
   static Dio? _instance;

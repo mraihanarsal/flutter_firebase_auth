@@ -1,7 +1,7 @@
-import 'package:pasar_malam/core/constants/api_constants.dart';
-import 'package:pasar_malam/core/services/dio_client.dart';
-import 'package:pasar_malam/features/order/data/models/order_model.dart';
-import 'package:pasar_malam/features/order/domain/repositories/order_repository.dart';
+import 'package:flutter_firebase_auth/core/constants/api_constants.dart';
+import 'package:flutter_firebase_auth/core/services/dio_client.dart';
+import 'package:flutter_firebase_auth/features/order/data/models/order_model.dart';
+import 'package:flutter_firebase_auth/features/order/domain/repositories/order_repository.dart';
 
 class OrderRepositoryImpl implements OrderRepository {
   @override

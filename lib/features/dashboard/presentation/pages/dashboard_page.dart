@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pasar_malam/core/providers/theme_provider.dart';
-import 'package:pasar_malam/core/routes/app_router.dart';
-import 'package:pasar_malam/features/auth/presentation/providers/auth_provider.dart';
-import 'package:pasar_malam/features/cart/presentation/providers/cart_provider.dart';
-import 'package:pasar_malam/features/dashboard/data/models/product_model.dart';
-import 'package:pasar_malam/features/dashboard/presentation/providers/product_provider.dart';
-import 'package:pasar_malam/features/order/presentation/providers/order_provider.dart';
+import 'package:flutter_firebase_auth/core/providers/theme_provider.dart';
+import 'package:flutter_firebase_auth/core/routes/app_router.dart';
+import 'package:flutter_firebase_auth/features/auth/presentation/providers/auth_provider.dart';
+import 'package:flutter_firebase_auth/features/cart/presentation/providers/cart_provider.dart';
+import 'package:flutter_firebase_auth/features/dashboard/data/models/product_model.dart';
+import 'package:flutter_firebase_auth/features/dashboard/presentation/providers/product_provider.dart';
+import 'package:flutter_firebase_auth/features/order/presentation/providers/order_provider.dart';
 import 'package:provider/provider.dart';
 
 class DashboardPage extends StatefulWidget {

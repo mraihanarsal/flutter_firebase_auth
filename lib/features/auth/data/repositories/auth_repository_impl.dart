@@ -1,6 +1,6 @@
-import 'package:pasar_malam/core/constants/api_constants.dart';
-import 'package:pasar_malam/core/services/dio_client.dart';
-import 'package:pasar_malam/features/auth/domain/repositories/auth_repository.dart';
+import 'package:flutter_firebase_auth/core/constants/api_constants.dart';
+import 'package:flutter_firebase_auth/core/services/dio_client.dart';
+import 'package:flutter_firebase_auth/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   @override

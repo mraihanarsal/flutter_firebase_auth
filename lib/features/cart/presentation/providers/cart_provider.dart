@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:pasar_malam/features/cart/data/models/cart_model.dart';
-import 'package:pasar_malam/features/cart/data/repositories/cart_repository_impl.dart';
-import 'package:pasar_malam/features/cart/domain/repositories/cart_repository.dart';
+import 'package:flutter_firebase_auth/features/cart/data/models/cart_model.dart';
+import 'package:flutter_firebase_auth/features/cart/data/repositories/cart_repository_impl.dart';
+import 'package:flutter_firebase_auth/features/cart/domain/repositories/cart_repository.dart';
 
 enum CartStatus { initial, loading, loaded, error }
 

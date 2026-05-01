@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pasar_malam/core/routes/app_router.dart';
-import 'package:pasar_malam/features/cart/data/models/cart_model.dart';
-import 'package:pasar_malam/features/cart/presentation/providers/cart_provider.dart';
+import 'package:flutter_firebase_auth/core/routes/app_router.dart';
+import 'package:flutter_firebase_auth/features/cart/data/models/cart_model.dart';
+import 'package:flutter_firebase_auth/features/cart/presentation/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
