@@ -11,6 +11,10 @@ import 'package:flutter_firebase_auth/features/order/presentation/pages/checkout
 import 'package:flutter_firebase_auth/features/order/presentation/pages/my_orders_page.dart';
 import 'package:flutter_firebase_auth/features/order/presentation/pages/order_success_page.dart';
 import 'package:flutter_firebase_auth/features/order/presentation/pages/payment_pending_page.dart';
+import 'package:flutter_firebase_auth/features/profile/presentation/pages/profile_page.dart';
+import 'package:flutter_firebase_auth/features/admin/presentation/pages/manage_products_page.dart';
+import 'package:flutter_firebase_auth/features/admin/presentation/pages/product_form_page.dart';
+import 'package:flutter_firebase_auth/features/dashboard/data/models/product_model.dart';
 import 'package:provider/provider.dart';
 
 class AppRouter {
@@ -24,6 +28,9 @@ class AppRouter {
   static const String orderSuccess = '/order-success';
   static const String myOrders = '/my-orders';
   static const String paymentPending = '/payment-pending';
+  static const String profile = '/profile';
+  static const String manageProducts = '/admin/manage-products';
+  static const String productForm = '/admin/product-form';
 
   static Map<String, WidgetBuilder> get routes => {
         splash: (_) => const SplashPage(),
@@ -34,6 +41,12 @@ class AppRouter {
         cart: (_) => const CartPage(),
         checkout: (_) => const CheckoutPage(),
         myOrders: (_) => const MyOrdersPage(),
+        profile: (_) => const ProfilePage(),
+        manageProducts: (_) => const ManageProductsPage(),
+        productForm: (context) {
+          final product = ModalRoute.of(context)?.settings.arguments as ProductModel?;
+          return ProductFormPage(product: product);
+        },
         orderSuccess: (context) {
           final order =
               ModalRoute.of(context)!.settings.arguments as OrderModel;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_auth/core/routes/app_router.dart';
 import 'package:flutter_firebase_auth/features/cart/presentation/providers/cart_provider.dart';
 import 'package:flutter_firebase_auth/features/order/presentation/providers/order_provider.dart';
+import 'package:flutter_firebase_auth/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -93,6 +94,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     if (success) {
       await cartProv.clearCart();
+      
+      NotificationService().showLocalNotification(
+        title: 'Checkout Berhasil',
+        body: 'Pesanan Anda berhasil dibuat dan sedang diproses.',
+      );
+
       if (!context.mounted) return;
 
       final order = orderProv.lastOrder!;

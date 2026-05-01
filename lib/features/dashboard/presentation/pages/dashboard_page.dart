@@ -6,6 +6,7 @@ import 'package:flutter_firebase_auth/features/cart/presentation/providers/cart_
 import 'package:flutter_firebase_auth/features/dashboard/data/models/product_model.dart';
 import 'package:flutter_firebase_auth/features/dashboard/presentation/providers/product_provider.dart';
 import 'package:flutter_firebase_auth/features/order/presentation/providers/order_provider.dart';
+import 'package:flutter_firebase_auth/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -22,12 +23,11 @@ class _DashboardPageState extends State<DashboardPage> {
 
   final List<_CategoryItem> _categories = const [
     _CategoryItem(label: 'All', icon: Icons.apps),
-    _CategoryItem(label: 'Running', icon: Icons.directions_run),
-    _CategoryItem(label: 'Lifestyle', icon: Icons.style),
-    _CategoryItem(label: 'Football', icon: Icons.sports_soccer),
-    _CategoryItem(label: 'Volleyball', icon: Icons.sports_volleyball),
-    _CategoryItem(label: 'Tennis', icon: Icons.sports_tennis),
-    _CategoryItem(label: 'Badminton', icon: Icons.sports),
+    _CategoryItem(label: 'Mobil Sedan', icon: Icons.directions_car),
+    _CategoryItem(label: 'Mobil SUV', icon: Icons.car_rental),
+    _CategoryItem(label: 'Motor Matic', icon: Icons.two_wheeler),
+    _CategoryItem(label: 'Motor Bebek', icon: Icons.motorcycle),
+    _CategoryItem(label: 'Motor Sport', icon: Icons.sports_motorsports),
   ];
 
   @override
@@ -239,8 +239,8 @@ class _DashboardPageState extends State<DashboardPage> {
                     }
                   });
                 } else if (i == 3) {
-                  // Account → logout dialog
-                  _showLogoutDialog(context, auth);
+                  // Account → navigate to ProfilePage
+                  Navigator.pushNamed(context, AppRouter.profile);
                 } else {
                   setState(() => _selectedNav = i);
                 }
@@ -291,7 +291,7 @@ class _SearchBar extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: 'Puma, Running, Training...',
+          hintText: 'Bridgestone, Michelin, Dunlop...',
           hintStyle: TextStyle(color: hintColor, fontSize: 14),
           prefixIcon: Icon(Icons.search, color: hintColor, size: 22),
           border: InputBorder.none,
@@ -341,7 +341,7 @@ class _BannerCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'New Collections!',
+                  'Promo Ban Baru!',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -350,7 +350,7 @@ class _BannerCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 const Text(
-                  'Get Discount up to 50%\nfor the first transaction',
+                  'Diskon hingga 30%\nuntuk penggantian ban pertama',
                   style: TextStyle(
                     color: Colors.white70,
                     fontSize: 12,
@@ -394,7 +394,7 @@ class _BannerCard extends StatelessWidget {
                 width: 160,
                 alignment: Alignment.center,
                 child: const Icon(
-                  Icons.directions_run,
+                  Icons.tire_repair,
                   size: 80,
                   color: Colors.white24,
                 ),
@@ -862,6 +862,12 @@ class _ProductDetailSheetState extends State<_ProductDetailSheet> {
                               .addToCart(p.id, _qty);
                           if (!context.mounted) return;
                           Navigator.pop(context);
+                          if (success) {
+                            NotificationService().showLocalNotification(
+                              title: 'Keranjang Belanja',
+                              body: '${p.name} berhasil ditambahkan ke keranjang',
+                            );
+                          }
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(

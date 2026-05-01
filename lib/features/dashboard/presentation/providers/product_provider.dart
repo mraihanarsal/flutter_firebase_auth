@@ -38,4 +38,60 @@ class ProductProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  Future<bool> addProduct(Map<String, dynamic> data) async {
+    _status = ProductStatus.loading;
+    notifyListeners();
+    try {
+      final response = await DioClient.instance.post(ApiConstants.products, data: data);
+      final newProduct = ProductModel.fromJson(response.data['data']);
+      _products.insert(0, newProduct);
+      _status = ProductStatus.loaded;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _error = 'Gagal menambah produk: $e';
+      _status = ProductStatus.error;
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> updateProduct(int id, Map<String, dynamic> data) async {
+    _status = ProductStatus.loading;
+    notifyListeners();
+    try {
+      final response = await DioClient.instance.put('${ApiConstants.products}/$id', data: data);
+      final updatedProduct = ProductModel.fromJson(response.data['data']);
+      final index = _products.indexWhere((p) => p.id == id);
+      if (index != -1) {
+        _products[index] = updatedProduct;
+      }
+      _status = ProductStatus.loaded;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _error = 'Gagal mengedit produk: $e';
+      _status = ProductStatus.error;
+      notifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> deleteProduct(int id) async {
+    _status = ProductStatus.loading;
+    notifyListeners();
+    try {
+      await DioClient.instance.delete('${ApiConstants.products}/$id');
+      _products.removeWhere((p) => p.id == id);
+      _status = ProductStatus.loaded;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _error = 'Gagal menghapus produk: $e';
+      _status = ProductStatus.error;
+      notifyListeners();
+      return false;
+    }
+  }
 }

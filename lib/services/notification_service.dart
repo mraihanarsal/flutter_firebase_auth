@@ -104,6 +104,25 @@ class NotificationService {
     );
   }
 
+  // ════ SHOW LOCAL NOTIFICATION MANUAL ══════════════════
+  Future<void> showLocalNotification({required String title, required String body}) async {
+    await _localNotif.show(
+      DateTime.now().millisecond,
+      title,
+      body,
+      const NotificationDetails(
+        android: AndroidNotificationDetails(
+          _channelId,
+          _channelName,
+          importance: Importance.max,
+          priority: Priority.high,
+          icon: '@mipmap/ic_launcher',
+        ),
+        iOS: DarwinNotificationDetails(),
+      ),
+    );
+  }
+
   // ════ HANDLER NOTIFICATION TAP ═════════════════════════
   void _handleMessageOpened(RemoteMessage message) {
     debugPrint('App opened from notification: ${message.messageId}');
