@@ -14,6 +14,7 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -27,8 +28,8 @@ android {
     applicationId = "com.example.flutter_firebase_auth"
 
     // Upgrade
-    minSdkVersion 21
-    targetSdkVersion 34
+    minSdk = flutter.minSdkVersion
+    targetSdk = 34
 
     // Untuk versionCode dan versionName, sebaiknya tetap gunakan variabel flutter
     versionCode = flutter.versionCode
@@ -46,4 +47,8 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.2")
 }
