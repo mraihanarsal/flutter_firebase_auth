@@ -1,4 +1,4 @@
-# UTS Pemrograman Mobile Lanjutan
+# Pemrograman Mobile Lanjutan
 
 ## 📱 Aplikasi
 **Aplikasi E-Commerce Toko Ban**
