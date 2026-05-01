@@ -20,4 +20,21 @@ class ProductRepositoryImpl implements ProductRepository {
     final response = await DioClient.instance.get('${ApiConstants.products}/$id');
     return ProductModel.fromJson(response.data['data']);
   }
+
+  @override
+  Future<ProductModel> addProduct(Map<String, dynamic> data) async {
+    final response = await DioClient.instance.post(ApiConstants.products, data: data);
+    return ProductModel.fromJson(response.data['data']);
+  }
+
+  @override
+  Future<ProductModel> updateProduct(int id, Map<String, dynamic> data) async {
+    final response = await DioClient.instance.put('${ApiConstants.products}/$id', data: data);
+    return ProductModel.fromJson(response.data['data']);
+  }
+
+  @override
+  Future<void> deleteProduct(int id) async {
+    await DioClient.instance.delete('${ApiConstants.products}/$id');
+  }
 }

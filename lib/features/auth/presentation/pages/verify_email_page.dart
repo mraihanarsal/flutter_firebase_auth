@@ -130,11 +130,14 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                     children: [
                       const Icon(Icons.email_outlined, color: Colors.grey),
                       const SizedBox(width: 12),
-                      Text(
-                        user?.email ?? '-',
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
+                      Expanded(
+                        child: Text(
+                          user?.email ?? '-',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],

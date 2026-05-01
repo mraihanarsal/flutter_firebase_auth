@@ -1,6 +1,6 @@
 class ApiConstants {
   // Ganti dengan URL backend kamu
-  static const String baseUrl = 'http://10.5.55.32:8081/v1';
+  static const String baseUrl = 'http://192.168.1.3:8081/v1';
 
   // Auth endpoints
   static const String verifyToken = '/auth/verify-token';
