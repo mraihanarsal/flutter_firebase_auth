@@ -1,0 +1,22 @@
+class ApiConstants {
+  // Ganti dengan URL backend kamu
+  static const String baseUrl = 'http://10.5.55.32:8081/v1';
+
+  // Auth endpoints
+  static const String verifyToken = '/auth/verify-token';
+  static const String refreshToken = '/auth/refresh';
+
+  // Product endpoints
+  static const String products = '/products';
+
+  // Cart endpoints
+  static const String cart = '/cart';
+
+  // Order endpoints
+  static const String orders = '/orders';
+  static const String checkout = '/orders/checkout';
+
+  // Timeouts
+  static const int connectTimeout = 15000; // ms
+  static const int receiveTimeout = 15000;
+}
